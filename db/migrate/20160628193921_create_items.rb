@@ -1,7 +1,8 @@
 class CreateItems < ActiveRecord::Migration
   def change
     create_table :items do |t|
-      t.string :item
+      t.references :list, index: true, foreign_key: true
+      t.string :name
 
       t.timestamps null: false
     end
