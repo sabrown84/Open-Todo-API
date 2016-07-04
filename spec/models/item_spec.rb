@@ -1,5 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe Item, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:my_user) { create(:user) }
+  let(:my_list) { create(:list, user: my_user) }
+  let(:my_item) { create(:item, list: my_list) }
+
+  it { should belong_to(:list) }
+
+  describe "attributes" do
+    it "should respond to description" do
+      expect(my_item).to respond_to(:description)
+    end
+  end
 end

@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :list do
-    user nil
+    title "Shopping List"
   end
 end

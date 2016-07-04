@@ -1,5 +1,6 @@
 FactoryGirl.define do
   factory :item do
-    list nil
+    list_id 1
+    description "MyString"
   end
 end
