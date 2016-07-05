@@ -3,12 +3,21 @@ class Api::ListsController < ApiController
 
   def create
     user = User.find(params[:user_id])
-    list = user.lists.build(params.require(:list))
+    list = user.lists.build(params.require(:list).permit(:name, :permissions))
 
     if list.save
       render json: list, status: 201
     else
       render json: {}, status: 422
+    end
+  end
+
+  def update
+    list = List.find(params[:id])
+    if list.update(list_params)
+      render json: list
+    else
+      render json: { errors: list.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
