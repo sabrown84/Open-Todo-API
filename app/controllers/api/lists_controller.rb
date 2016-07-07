@@ -30,4 +30,10 @@ class Api::ListsController < ApiController
       render :json => {}, :status => :not_found
     end
   end
+
+  private
+
+  def list_params
+    params.require(:list).permit(:title, :permission, :user)
+  end
 end

@@ -5,16 +5,16 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     resources :users do
-      resources :lists
+      resources :lists, only: [:create, :update]
     end
 
-    resources :lists, only: [] do
-      resources :items, only: [:create]
+    resources :lists, only: [:destroy] do
+      resources :items, only: [:create, :update]
     end
 
     resources :items, only: [:destroy]
   end
-  
+
   root 'welcome#index'
 
 end

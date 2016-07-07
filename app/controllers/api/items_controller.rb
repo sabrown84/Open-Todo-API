@@ -11,4 +11,19 @@ class Api::ItemsController < ApiController
       render json: {}, status: 422
     end
   end
+
+  def update
+    item = Item.find(params[:id])
+    if item.update(item_params)
+      render json: item
+    else
+      render json: { errors: items.errors.full_messages }, status: :unprocessable_entity
+    end
+  end
+
+  private
+
+  def item_params
+    params.require(:item).permit(:name, :completed, :list)
+  end
 end
