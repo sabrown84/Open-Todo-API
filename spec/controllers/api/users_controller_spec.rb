@@ -15,5 +15,5 @@ RSpec.describe Api::UsersController, type: :controller do
       get :index
       assert_equal 401, response.status
     end
-  end
-end 
+  end  
+end

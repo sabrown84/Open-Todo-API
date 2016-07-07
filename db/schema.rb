@@ -25,8 +25,9 @@ ActiveRecord::Schema.define(version: 20160628194615) do
   create_table "lists", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "permissions", default: "private"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
   add_index "lists", ["user_id"], name: "index_lists_on_user_id"
