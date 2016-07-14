@@ -17,7 +17,7 @@ class Api::ListsController < ApiController
     if list.update(list_params)
       render json: list
     else
-      render json: { errors: list.errors.full_messages }, status: :unprocessable_entity
+      render json: { errors: list.errors.full_messages }, status: :unprocessable_entity # rubocop:disable LineLength
     end
   end
 
@@ -27,7 +27,7 @@ class Api::ListsController < ApiController
       list.destroy
       render json: {}, status: :no_content
     rescue ActiveRecord::RecordNotFound
-      render :json => {}, :status => :not_found
+      render json: {}, status: :not_found
     end
   end
 

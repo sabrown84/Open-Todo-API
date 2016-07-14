@@ -1,5 +1,5 @@
 class Api::UsersController < ApiController
-  #before_action :authenticated?
+  # before_action :authenticated?
 
   def index
     users = User.all
@@ -11,7 +11,7 @@ class Api::UsersController < ApiController
     if user.save
       render json: user
     else
-      render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
+      render json: { errors: user.errors.full_messages }, status: :unprocessable_entity # rubocop:disable LineLength
     end
   end
 
@@ -21,13 +21,13 @@ class Api::UsersController < ApiController
       user.destroy
       render json: {}, status: :no_content
     rescue ActiveRecord::RecordNotFound
-      render :json => {}, :status => :not_found
+      render json: {}, status: :not_found
     end
   end
 
   private
+
   def user_params
     params.require(:user).permit(:username, :password)
   end
-
 end

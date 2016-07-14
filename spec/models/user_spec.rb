@@ -6,8 +6,8 @@ RSpec.describe User, type: :model do
 
     it { should have_many(:lists) }
 
-    describe "attributes" do
-      it "should respond to username" do
+    describe 'attributes' do
+      it 'should respond to username' do
         expect(user).to respond_to(:username)
       end
     end
