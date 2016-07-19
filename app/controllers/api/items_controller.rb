@@ -19,7 +19,7 @@ class Api < ApiController
       if item.update(item_params)
         render json: item
       else
-        render json: { errors: items.errors.full_messages }, status: :unprocessable_entity # rubocop:disable LineLength
+        render json: { errors: items.errors.full_messages }, status: :unprocessable_entity
       end
     end
 
