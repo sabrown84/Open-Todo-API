@@ -7,8 +7,8 @@ RSpec.describe Item, type: :model do
 
   it { should belong_to(:list) }
 
-  describe "attributes" do
-    it "should respond to description" do
+  describe 'attributes' do
+    it 'should respond to description' do
       expect(my_item).to respond_to(:description)
     end
   end

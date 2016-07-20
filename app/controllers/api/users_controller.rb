@@ -1,5 +1,5 @@
 class Api::UsersController < ApiController
-  #before_action :authenticated?
+  # before_action :authenticated?
 
   def index
     users = User.all
@@ -16,18 +16,16 @@ class Api::UsersController < ApiController
   end
 
   def destroy
-    begin
-      user = User.find(params[:id])
-      user.destroy
-      render json: {}, status: :no_content
-    rescue ActiveRecord::RecordNotFound
-      render :json => {}, :status => :not_found
-    end
+    user = User.find(params[:id])
+    user.destroy
+    render json: {}, status: :no_content
+  rescue ActiveRecord::RecordNotFound
+    render json: {}, status: :not_found
   end
 
   private
+
   def user_params
     params.require(:user).permit(:username, :password)
   end
-
 end
